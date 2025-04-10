@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 0, 0, 0, 0, 0, 1);
             BaseUnit = LuminousFluxUnit.Lumen;
-            Units = Enum.GetValues(typeof(LuminousFluxUnit)).Cast<LuminousFluxUnit>().ToArray();
+            Units = EnumHelpers.GetValues<LuminousFluxUnit>();
             Zero = new LuminousFlux(0, BaseUnit);
             Info = new QuantityInfo<LuminousFluxUnit>("LuminousFlux",
                 new UnitInfo<LuminousFluxUnit>[]

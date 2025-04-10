@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(1, 1, -1, 0, 0, 0, 0);
             BaseUnit = ImpulseUnit.NewtonSecond;
-            Units = Enum.GetValues(typeof(ImpulseUnit)).Cast<ImpulseUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ImpulseUnit>();
             Zero = new Impulse(0, BaseUnit);
             Info = new QuantityInfo<ImpulseUnit>("Impulse",
                 new UnitInfo<ImpulseUnit>[]

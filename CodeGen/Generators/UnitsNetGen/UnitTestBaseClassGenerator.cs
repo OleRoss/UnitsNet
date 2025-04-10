@@ -99,6 +99,7 @@ using System.Threading;
 using UnitsNet.Tests.Helpers;
 using UnitsNet.Tests.TestsBase;
 using UnitsNet.Units;
+using UnitsNet.InternalHelpers;
 using Xunit;
 
 // Disable build warning CS1718: Comparison made to same variable; did you mean to compare something else?
@@ -582,7 +583,7 @@ namespace UnitsNet.Tests
         [Fact]
         public void HasAtLeastOneAbbreviationSpecified()
         {{
-            var units = Enum.GetValues(typeof({_unitEnumName})).Cast<{_unitEnumName}>();
+            var units = EnumHelpers.GetValues<{_unitEnumName}>();
             foreach (var unit in units)
             {{
                 var defaultAbbreviation = UnitsNetSetup.Default.UnitAbbreviations.GetDefaultAbbreviation(unit);

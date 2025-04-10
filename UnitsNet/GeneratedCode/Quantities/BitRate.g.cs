@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 0, -1, 0, 0, 0, 0);
             BaseUnit = BitRateUnit.BitPerSecond;
-            Units = Enum.GetValues(typeof(BitRateUnit)).Cast<BitRateUnit>().ToArray();
+            Units = EnumHelpers.GetValues<BitRateUnit>();
             Zero = new BitRate(0, BaseUnit);
             Info = new QuantityInfo<BitRateUnit>("BitRate",
                 new UnitInfo<BitRateUnit>[]

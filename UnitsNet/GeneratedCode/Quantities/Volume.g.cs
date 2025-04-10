@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(3, 0, 0, 0, 0, 0, 0);
             BaseUnit = VolumeUnit.CubicMeter;
-            Units = Enum.GetValues(typeof(VolumeUnit)).Cast<VolumeUnit>().ToArray();
+            Units = EnumHelpers.GetValues<VolumeUnit>();
             Zero = new Volume(0, BaseUnit);
             Info = new QuantityInfo<VolumeUnit>("Volume",
                 new UnitInfo<VolumeUnit>[]

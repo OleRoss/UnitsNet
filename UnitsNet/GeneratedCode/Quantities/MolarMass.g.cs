@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 1, 0, 0, 0, -1, 0);
             BaseUnit = MolarMassUnit.KilogramPerMole;
-            Units = Enum.GetValues(typeof(MolarMassUnit)).Cast<MolarMassUnit>().ToArray();
+            Units = EnumHelpers.GetValues<MolarMassUnit>();
             Zero = new MolarMass(0, BaseUnit);
             Info = new QuantityInfo<MolarMassUnit>("MolarMass",
                 new UnitInfo<MolarMassUnit>[]

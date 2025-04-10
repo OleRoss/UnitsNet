@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, -2, 0, 0, 0, 0);
             BaseUnit = TorqueUnit.NewtonMeter;
-            Units = Enum.GetValues(typeof(TorqueUnit)).Cast<TorqueUnit>().ToArray();
+            Units = EnumHelpers.GetValues<TorqueUnit>();
             Zero = new Torque(0, BaseUnit);
             Info = new QuantityInfo<TorqueUnit>("Torque",
                 new UnitInfo<TorqueUnit>[]

@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-2, -1, 3, 2, 0, 0, 0);
             BaseUnit = ElectricSusceptanceUnit.Siemens;
-            Units = Enum.GetValues(typeof(ElectricSusceptanceUnit)).Cast<ElectricSusceptanceUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ElectricSusceptanceUnit>();
             Zero = new ElectricSusceptance(0, BaseUnit);
             Info = new QuantityInfo<ElectricSusceptanceUnit>("ElectricSusceptance",
                 new UnitInfo<ElectricSusceptanceUnit>[]

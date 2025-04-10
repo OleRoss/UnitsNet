@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 0, 0, 0, 0, 0, 1);
             BaseUnit = LuminousIntensityUnit.Candela;
-            Units = Enum.GetValues(typeof(LuminousIntensityUnit)).Cast<LuminousIntensityUnit>().ToArray();
+            Units = EnumHelpers.GetValues<LuminousIntensityUnit>();
             Zero = new LuminousIntensity(0, BaseUnit);
             Info = new QuantityInfo<LuminousIntensityUnit>("LuminousIntensity",
                 new UnitInfo<LuminousIntensityUnit>[]

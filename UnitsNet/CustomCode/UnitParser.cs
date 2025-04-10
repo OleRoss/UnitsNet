@@ -2,9 +2,11 @@
 // Copyright 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com). Maintained at https://github.com/angularsen/UnitsNet.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using UnitsNet.InternalHelpers;
 using UnitsNet.Units;
 
 // ReSharper disable once CheckNamespace
@@ -45,9 +47,10 @@ namespace UnitsNet
         /// <param name="formatProvider">The format provider to use for lookup. Defaults to <see cref="CultureInfo.CurrentCulture" /> if null.</param>
         /// <typeparam name="TUnitType"></typeparam>
         /// <returns></returns>
-        public TUnitType Parse<TUnitType>(string unitAbbreviation, IFormatProvider? formatProvider = null) where TUnitType : Enum
+        public TUnitType Parse<TUnitType>(string unitAbbreviation, IFormatProvider? formatProvider = null) where TUnitType : struct, Enum
         {
-            return (TUnitType)Parse(unitAbbreviation, typeof(TUnitType), formatProvider);
+            var enumValues = EnumHelpers.GetValues<TUnitType>();
+            return (TUnitType)_Parse(unitAbbreviation, typeof(TUnitType), enumValues, formatProvider);
         }
 
         /// <summary>
@@ -63,12 +66,19 @@ namespace UnitsNet
         /// <returns>Unit enum value, such as <see cref="MassUnit.Kilogram" />.</returns>
         /// <exception cref="UnitNotFoundException">No units match the abbreviation.</exception>
         /// <exception cref="AmbiguousUnitParseException">More than one unit matches the abbreviation.</exception>
+        [RequiresDynamicCode("It might not be possible to the enum type at runtime. Use the GetValues<TEnum> overload instead.")]
         public Enum Parse(string? unitAbbreviation, Type unitType, IFormatProvider? formatProvider = null)
+        {
+            var enumValues = Enum.GetValues(unitType).Cast<Enum>().ToArray();
+            return _Parse(unitAbbreviation, unitType, enumValues, formatProvider);
+        }
+
+        private Enum _Parse<TEnum>(string? unitAbbreviation, Type unitType, IEnumerable<TEnum> enumValues, IFormatProvider? formatProvider = null)
+            where TEnum : Enum
         {
             if (unitAbbreviation == null) throw new ArgumentNullException(nameof(unitAbbreviation));
             unitAbbreviation = unitAbbreviation.Trim();
 
-            var enumValues = Enum.GetValues(unitType).Cast<Enum>();
             var stringUnitPairs = _unitAbbreviationsCache.GetStringUnitPairs(enumValues, formatProvider);
             var matches = stringUnitPairs.Where(pair => pair.Item1.Equals(unitAbbreviation, StringComparison.OrdinalIgnoreCase)).ToArray();
 
@@ -95,7 +105,7 @@ namespace UnitsNet
                     // Retry with fallback culture, if different.
                     if (formatProvider != null && !Equals(formatProvider, UnitAbbreviationsCache.FallbackCulture))
                     {
-                        return Parse(unitAbbreviation, unitType, UnitAbbreviationsCache.FallbackCulture);
+                        return _Parse(unitAbbreviation, unitType, enumValues, UnitAbbreviationsCache.FallbackCulture);
                     }
 
                     if (hasMultipleCaseInsensitiveMatches)
@@ -168,7 +178,8 @@ namespace UnitsNet
         {
             unit = default;
 
-            if (!TryParse(unitAbbreviation, typeof(TUnitType), formatProvider, out var unitObj))
+            var enumValues = EnumHelpers.GetValues<TUnitType>();
+            if (!_TryParse(unitAbbreviation, typeof(TUnitType), enumValues, formatProvider, out var unitObj))
                 return false;
 
             unit = (TUnitType)unitObj;
@@ -182,6 +193,7 @@ namespace UnitsNet
         /// <param name="unitType">Type of unit enum.</param>
         /// <param name="unit">The unit enum value as out result.</param>
         /// <returns>True if successful.</returns>
+        [RequiresDynamicCode("It might not be possible to create an array of the enum type at runtime. Use the TryParse<TEnum> overload instead")]
         public bool TryParse(string unitAbbreviation, Type unitType, [NotNullWhen(true)] out Enum? unit)
         {
             return TryParse(unitAbbreviation, unitType, null, out unit);
@@ -195,7 +207,15 @@ namespace UnitsNet
         /// <param name="formatProvider">The format provider to use for lookup. Defaults to <see cref="CultureInfo.CurrentCulture" /> if null.</param>
         /// <param name="unit">The unit enum value as out result.</param>
         /// <returns>True if successful.</returns>
+        [RequiresDynamicCode("It might not be possible to create an array of the enum type at runtime. Use the TryParse<TEnum> overload instead")]
         public bool TryParse(string? unitAbbreviation, Type unitType, IFormatProvider? formatProvider, [NotNullWhen(true)] out Enum? unit)
+        {
+            var enumValues = Enum.GetValues(unitType).Cast<Enum>();
+            return _TryParse(unitAbbreviation, unitType, enumValues, formatProvider, out unit);
+        }
+
+        private bool _TryParse<TEnum>(string? unitAbbreviation, Type unitType, IEnumerable<TEnum> enumValues, IFormatProvider? formatProvider, [NotNullWhen(true)] out Enum? unit)
+            where TEnum : Enum
         {
             if (unitAbbreviation == null)
             {
@@ -206,7 +226,6 @@ namespace UnitsNet
             unitAbbreviation = unitAbbreviation.Trim();
             unit = default;
 
-            var enumValues = Enum.GetValues(unitType).Cast<Enum>();
             var stringUnitPairs = _unitAbbreviationsCache.GetStringUnitPairs(enumValues, formatProvider);
             var matches = stringUnitPairs.Where(pair => pair.Item1.Equals(unitAbbreviation, StringComparison.OrdinalIgnoreCase)).ToArray();
 

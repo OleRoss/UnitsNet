@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(1, -1, 2, 0, 0, 0, 0);
             BaseUnit = CompressibilityUnit.InversePascal;
-            Units = Enum.GetValues(typeof(CompressibilityUnit)).Cast<CompressibilityUnit>().ToArray();
+            Units = EnumHelpers.GetValues<CompressibilityUnit>();
             Zero = new Compressibility(0, BaseUnit);
             Info = new QuantityInfo<CompressibilityUnit>("Compressibility",
                 new UnitInfo<CompressibilityUnit>[]

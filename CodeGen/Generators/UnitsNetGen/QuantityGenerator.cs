@@ -125,7 +125,7 @@ namespace UnitsNet
 
             Writer.WL($@"
             BaseUnit = {_unitEnumName}.{_quantity.BaseUnit};
-            Units = Enum.GetValues(typeof({_unitEnumName})).Cast<{_unitEnumName}>().ToArray();
+            Units = EnumHelpers.GetValues<{_unitEnumName}>();
             Zero = new {_quantity.Name}(0, BaseUnit);
             Info = new QuantityInfo<{_unitEnumName}>(""{_quantity.Name}"",
                 new UnitInfo<{_unitEnumName}>[]

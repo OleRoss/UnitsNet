@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-2, 1, 0, 0, 0, 0, 0);
             BaseUnit = AreaDensityUnit.KilogramPerSquareMeter;
-            Units = Enum.GetValues(typeof(AreaDensityUnit)).Cast<AreaDensityUnit>().ToArray();
+            Units = EnumHelpers.GetValues<AreaDensityUnit>();
             Zero = new AreaDensity(0, BaseUnit);
             Info = new QuantityInfo<AreaDensityUnit>("AreaDensity",
                 new UnitInfo<AreaDensityUnit>[]

@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, 0, 0, 0, 0, 0);
             BaseUnit = AreaUnit.SquareMeter;
-            Units = Enum.GetValues(typeof(AreaUnit)).Cast<AreaUnit>().ToArray();
+            Units = EnumHelpers.GetValues<AreaUnit>();
             Zero = new Area(0, BaseUnit);
             Info = new QuantityInfo<AreaUnit>("Area",
                 new UnitInfo<AreaUnit>[]

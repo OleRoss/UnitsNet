@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, -1, 3, 0, 1, 0, 0);
             BaseUnit = ThermalResistanceUnit.SquareMeterKelvinPerKilowatt;
-            Units = Enum.GetValues(typeof(ThermalResistanceUnit)).Cast<ThermalResistanceUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ThermalResistanceUnit>();
             Zero = new ThermalResistance(0, BaseUnit);
             Info = new QuantityInfo<ThermalResistanceUnit>("ThermalResistance",
                 new UnitInfo<ThermalResistanceUnit>[]

@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-1, 1, -3, 0, 0, 0, 0);
             BaseUnit = PressureChangeRateUnit.PascalPerSecond;
-            Units = Enum.GetValues(typeof(PressureChangeRateUnit)).Cast<PressureChangeRateUnit>().ToArray();
+            Units = EnumHelpers.GetValues<PressureChangeRateUnit>();
             Zero = new PressureChangeRate(0, BaseUnit);
             Info = new QuantityInfo<PressureChangeRateUnit>("PressureChangeRate",
                 new UnitInfo<PressureChangeRateUnit>[]

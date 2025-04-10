@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 1, -3, 0, 0, 0, 0);
             BaseUnit = IrradianceUnit.WattPerSquareMeter;
-            Units = Enum.GetValues(typeof(IrradianceUnit)).Cast<IrradianceUnit>().ToArray();
+            Units = EnumHelpers.GetValues<IrradianceUnit>();
             Zero = new Irradiance(0, BaseUnit);
             Info = new QuantityInfo<IrradianceUnit>("Irradiance",
                 new UnitInfo<IrradianceUnit>[]

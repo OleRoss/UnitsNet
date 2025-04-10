@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-2, 0, 0, 0, 0, 0, 0);
             BaseUnit = ReciprocalAreaUnit.InverseSquareMeter;
-            Units = Enum.GetValues(typeof(ReciprocalAreaUnit)).Cast<ReciprocalAreaUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ReciprocalAreaUnit>();
             Zero = new ReciprocalArea(0, BaseUnit);
             Info = new QuantityInfo<ReciprocalAreaUnit>("ReciprocalArea",
                 new UnitInfo<ReciprocalAreaUnit>[]

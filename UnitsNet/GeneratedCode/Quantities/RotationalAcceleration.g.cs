@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 0, -2, 0, 0, 0, 0);
             BaseUnit = RotationalAccelerationUnit.RadianPerSecondSquared;
-            Units = Enum.GetValues(typeof(RotationalAccelerationUnit)).Cast<RotationalAccelerationUnit>().ToArray();
+            Units = EnumHelpers.GetValues<RotationalAccelerationUnit>();
             Zero = new RotationalAcceleration(0, BaseUnit);
             Info = new QuantityInfo<RotationalAccelerationUnit>("RotationalAcceleration",
                 new UnitInfo<RotationalAccelerationUnit>[]

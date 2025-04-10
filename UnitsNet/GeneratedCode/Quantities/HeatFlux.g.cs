@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 1, -3, 0, 0, 0, 0);
             BaseUnit = HeatFluxUnit.WattPerSquareMeter;
-            Units = Enum.GetValues(typeof(HeatFluxUnit)).Cast<HeatFluxUnit>().ToArray();
+            Units = EnumHelpers.GetValues<HeatFluxUnit>();
             Zero = new HeatFlux(0, BaseUnit);
             Info = new QuantityInfo<HeatFluxUnit>("HeatFlux",
                 new UnitInfo<HeatFluxUnit>[]

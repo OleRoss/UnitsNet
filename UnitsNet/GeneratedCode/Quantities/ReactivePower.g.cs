@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, -3, 0, 0, 0, 0);
             BaseUnit = ReactivePowerUnit.VoltampereReactive;
-            Units = Enum.GetValues(typeof(ReactivePowerUnit)).Cast<ReactivePowerUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ReactivePowerUnit>();
             Zero = new ReactivePower(0, BaseUnit);
             Info = new QuantityInfo<ReactivePowerUnit>("ReactivePower",
                 new UnitInfo<ReactivePowerUnit>[]

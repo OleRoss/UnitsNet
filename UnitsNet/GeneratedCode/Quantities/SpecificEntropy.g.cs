@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, -2, 0, -1, 0, 0);
             BaseUnit = SpecificEntropyUnit.JoulePerKilogramKelvin;
-            Units = Enum.GetValues(typeof(SpecificEntropyUnit)).Cast<SpecificEntropyUnit>().ToArray();
+            Units = EnumHelpers.GetValues<SpecificEntropyUnit>();
             Zero = new SpecificEntropy(0, BaseUnit);
             Info = new QuantityInfo<SpecificEntropyUnit>("SpecificEntropy",
                 new UnitInfo<SpecificEntropyUnit>[]

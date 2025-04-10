@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, 0, 0, 0, 0, 0);
             BaseUnit = MassMomentOfInertiaUnit.KilogramSquareMeter;
-            Units = Enum.GetValues(typeof(MassMomentOfInertiaUnit)).Cast<MassMomentOfInertiaUnit>().ToArray();
+            Units = EnumHelpers.GetValues<MassMomentOfInertiaUnit>();
             Zero = new MassMomentOfInertia(0, BaseUnit);
             Info = new QuantityInfo<MassMomentOfInertiaUnit>("MassMomentOfInertia",
                 new UnitInfo<MassMomentOfInertiaUnit>[]

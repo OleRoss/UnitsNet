@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(1, 0, -1, 0, 0, 0, 0);
             BaseUnit = VolumeFlowPerAreaUnit.CubicMeterPerSecondPerSquareMeter;
-            Units = Enum.GetValues(typeof(VolumeFlowPerAreaUnit)).Cast<VolumeFlowPerAreaUnit>().ToArray();
+            Units = EnumHelpers.GetValues<VolumeFlowPerAreaUnit>();
             Zero = new VolumeFlowPerArea(0, BaseUnit);
             Info = new QuantityInfo<VolumeFlowPerAreaUnit>("VolumeFlowPerArea",
                 new UnitInfo<VolumeFlowPerAreaUnit>[]

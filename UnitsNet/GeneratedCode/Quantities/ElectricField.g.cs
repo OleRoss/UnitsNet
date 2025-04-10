@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(1, 1, -3, -1, 0, 0, 0);
             BaseUnit = ElectricFieldUnit.VoltPerMeter;
-            Units = Enum.GetValues(typeof(ElectricFieldUnit)).Cast<ElectricFieldUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ElectricFieldUnit>();
             Zero = new ElectricField(0, BaseUnit);
             Info = new QuantityInfo<ElectricFieldUnit>("ElectricField",
                 new UnitInfo<ElectricFieldUnit>[]

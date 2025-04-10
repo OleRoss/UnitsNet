@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(4, 0, 0, 0, 0, 0, 0);
             BaseUnit = AreaMomentOfInertiaUnit.MeterToTheFourth;
-            Units = Enum.GetValues(typeof(AreaMomentOfInertiaUnit)).Cast<AreaMomentOfInertiaUnit>().ToArray();
+            Units = EnumHelpers.GetValues<AreaMomentOfInertiaUnit>();
             Zero = new AreaMomentOfInertia(0, BaseUnit);
             Info = new QuantityInfo<AreaMomentOfInertiaUnit>("AreaMomentOfInertia",
                 new UnitInfo<AreaMomentOfInertiaUnit>[]

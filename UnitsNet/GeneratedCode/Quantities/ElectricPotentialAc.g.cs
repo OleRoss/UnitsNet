@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = ElectricPotentialAcUnit.VoltAc;
-            Units = Enum.GetValues(typeof(ElectricPotentialAcUnit)).Cast<ElectricPotentialAcUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ElectricPotentialAcUnit>();
             Zero = new ElectricPotentialAc(0, BaseUnit);
             Info = new QuantityInfo<ElectricPotentialAcUnit>("ElectricPotentialAc",
                 new UnitInfo<ElectricPotentialAcUnit>[]

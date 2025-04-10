@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, -1, 0, 0, 0, 0);
             BaseUnit = KinematicViscosityUnit.SquareMeterPerSecond;
-            Units = Enum.GetValues(typeof(KinematicViscosityUnit)).Cast<KinematicViscosityUnit>().ToArray();
+            Units = EnumHelpers.GetValues<KinematicViscosityUnit>();
             Zero = new KinematicViscosity(0, BaseUnit);
             Info = new QuantityInfo<KinematicViscosityUnit>("KinematicViscosity",
                 new UnitInfo<KinematicViscosityUnit>[]

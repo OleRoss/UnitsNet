@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
+using UnitsNet.InternalHelpers;
 using UnitsNet.Units;
 
 // ReSharper disable once CheckNamespace
@@ -271,6 +272,7 @@ namespace UnitsNet
         /// <param name="unitEnumType">Enum type for unit.</param>
         /// <param name="formatProvider">The format provider to use for lookup. Defaults to <see cref="CultureInfo.CurrentCulture" /> if null.</param>
         /// <returns>Unit abbreviations associated with unit.</returns>
+        [RequiresDynamicCode("It might not be possible to create an array of the enum type at runtime. Use the GetAllUnitAbbreviationsForQuantity<TEnum> overload.")]
         public IReadOnlyList<string> GetAllUnitAbbreviationsForQuantity(Type unitEnumType, IFormatProvider? formatProvider = null)
         {
             var enumValues = Enum.GetValues(unitEnumType).Cast<Enum>();
@@ -278,7 +280,22 @@ namespace UnitsNet
             return all.Select(pair => pair.Item1).ToList();
         }
 
-        internal List<(string Abbreviation, Enum Unit)> GetStringUnitPairs(IEnumerable<Enum> enumValues, IFormatProvider? formatProvider = null)
+        /// <summary>
+        ///     Get all abbreviations for all units of a quantity.
+        /// </summary>
+        /// <param name="formatProvider">The format provider to use for lookup. Defaults to <see cref="CultureInfo.CurrentCulture" /> if null.</param>
+        /// <typeparam name="TEnum">Enum type for unit.</typeparam>
+        /// <returns>Unit abbreviations associated with unit.</returns>
+        public IReadOnlyList<string> GetAllUnitAbbreviationsForQuantity<TEnum>(IFormatProvider? formatProvider = null)
+            where TEnum : struct, Enum
+        {
+            var enumValues = EnumHelpers.GetValues<TEnum>();
+            var all = GetStringUnitPairs(enumValues, formatProvider);
+            return all.Select(pair => pair.Item1).ToList();
+        }
+
+        internal List<(string Abbreviation, Enum Unit)> GetStringUnitPairs<TEnum>(IEnumerable<TEnum> enumValues, IFormatProvider? formatProvider = null)
+            where TEnum : Enum
         {
             var ret = new List<(string, Enum)>();
             formatProvider ??= CultureInfo.CurrentCulture;

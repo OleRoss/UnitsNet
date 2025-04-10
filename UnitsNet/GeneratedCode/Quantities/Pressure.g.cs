@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-1, 1, -2, 0, 0, 0, 0);
             BaseUnit = PressureUnit.Pascal;
-            Units = Enum.GetValues(typeof(PressureUnit)).Cast<PressureUnit>().ToArray();
+            Units = EnumHelpers.GetValues<PressureUnit>();
             Zero = new Pressure(0, BaseUnit);
             Info = new QuantityInfo<PressureUnit>("Pressure",
                 new UnitInfo<PressureUnit>[]

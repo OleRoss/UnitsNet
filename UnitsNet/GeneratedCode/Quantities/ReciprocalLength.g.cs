@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-1, 0, 0, 0, 0, 0, 0);
             BaseUnit = ReciprocalLengthUnit.InverseMeter;
-            Units = Enum.GetValues(typeof(ReciprocalLengthUnit)).Cast<ReciprocalLengthUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ReciprocalLengthUnit>();
             Zero = new ReciprocalLength(0, BaseUnit);
             Info = new QuantityInfo<ReciprocalLengthUnit>("ReciprocalLength",
                 new UnitInfo<ReciprocalLengthUnit>[]

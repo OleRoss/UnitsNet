@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-2, -1, 4, 2, 0, 0, 0);
             BaseUnit = ElectricCapacitanceUnit.Farad;
-            Units = Enum.GetValues(typeof(ElectricCapacitanceUnit)).Cast<ElectricCapacitanceUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ElectricCapacitanceUnit>();
             Zero = new ElectricCapacitance(0, BaseUnit);
             Info = new QuantityInfo<ElectricCapacitanceUnit>("ElectricCapacitance",
                 new UnitInfo<ElectricCapacitanceUnit>[]

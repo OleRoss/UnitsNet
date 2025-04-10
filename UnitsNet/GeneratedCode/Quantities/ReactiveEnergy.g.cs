@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, -2, 0, 0, 0, 0);
             BaseUnit = ReactiveEnergyUnit.VoltampereReactiveHour;
-            Units = Enum.GetValues(typeof(ReactiveEnergyUnit)).Cast<ReactiveEnergyUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ReactiveEnergyUnit>();
             Zero = new ReactiveEnergy(0, BaseUnit);
             Info = new QuantityInfo<ReactiveEnergyUnit>("ReactiveEnergy",
                 new UnitInfo<ReactiveEnergyUnit>[]

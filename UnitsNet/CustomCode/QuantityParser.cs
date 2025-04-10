@@ -69,7 +69,7 @@ namespace UnitsNet
             IFormatProvider? formatProvider,
             QuantityFromDelegate<TQuantity, TUnitType> fromDelegate)
             where TQuantity : IQuantity
-            where TUnitType : Enum
+            where TUnitType : struct, Enum
         {
             if (str == null) throw new ArgumentNullException(nameof(str));
             str = str.Trim();
@@ -183,7 +183,7 @@ namespace UnitsNet
             QuantityFromDelegate<TQuantity, TUnitType> fromDelegate,
             IFormatProvider? formatProvider)
             where TQuantity : IQuantity
-            where TUnitType : Enum
+            where TUnitType : struct, Enum
         {
             var value = double.Parse(valueString, ParseNumberStyles, formatProvider);
             var parsedUnit = _unitParser.Parse<TUnitType>(unitString, formatProvider);
@@ -244,16 +244,16 @@ namespace UnitsNet
             return true;
         }
 
-        private string CreateRegexPatternForQuantity<TUnitType>(IFormatProvider? formatProvider) where TUnitType : Enum
+        private string CreateRegexPatternForQuantity<TUnitType>(IFormatProvider? formatProvider) where TUnitType : struct, Enum
         {
-            var unitAbbreviations = _unitAbbreviationsCache.GetAllUnitAbbreviationsForQuantity(typeof(TUnitType), formatProvider);
+            var unitAbbreviations = _unitAbbreviationsCache.GetAllUnitAbbreviationsForQuantity<TUnitType>(formatProvider);
             var pattern = GetRegexPatternForUnitAbbreviations(unitAbbreviations);
 
             // Match entire string exactly
             return $"^{pattern}$";
         }
 
-        private Regex CreateRegexForQuantity<TUnitType>(IFormatProvider? formatProvider) where TUnitType : Enum
+        private Regex CreateRegexForQuantity<TUnitType>(IFormatProvider? formatProvider) where TUnitType : struct, Enum
         {
             var pattern = CreateRegexPatternForQuantity<TUnitType>(formatProvider);
             return new Regex(pattern, RegexOptions.Singleline | RegexOptions.IgnoreCase);

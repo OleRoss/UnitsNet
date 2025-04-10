@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = VitaminAUnit.InternationalUnit;
-            Units = Enum.GetValues(typeof(VitaminAUnit)).Cast<VitaminAUnit>().ToArray();
+            Units = EnumHelpers.GetValues<VitaminAUnit>();
             Zero = new VitaminA(0, BaseUnit);
             Info = new QuantityInfo<VitaminAUnit>("VitaminA",
                 new UnitInfo<VitaminAUnit>[]

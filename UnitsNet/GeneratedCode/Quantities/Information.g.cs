@@ -63,7 +63,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = InformationUnit.Bit;
-            Units = Enum.GetValues(typeof(InformationUnit)).Cast<InformationUnit>().ToArray();
+            Units = EnumHelpers.GetValues<InformationUnit>();
             Zero = new Information(0, BaseUnit);
             Info = new QuantityInfo<InformationUnit>("Information",
                 new UnitInfo<InformationUnit>[]

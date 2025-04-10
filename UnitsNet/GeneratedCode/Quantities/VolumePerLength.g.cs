@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, 0, 0, 0, 0, 0);
             BaseUnit = VolumePerLengthUnit.CubicMeterPerMeter;
-            Units = Enum.GetValues(typeof(VolumePerLengthUnit)).Cast<VolumePerLengthUnit>().ToArray();
+            Units = EnumHelpers.GetValues<VolumePerLengthUnit>();
             Zero = new VolumePerLength(0, BaseUnit);
             Info = new QuantityInfo<VolumePerLengthUnit>("VolumePerLength",
                 new UnitInfo<VolumePerLengthUnit>[]

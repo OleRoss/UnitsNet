@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(0, 0, -1, 0, 0, 1, 0);
             BaseUnit = MolarFlowUnit.MolePerSecond;
-            Units = Enum.GetValues(typeof(MolarFlowUnit)).Cast<MolarFlowUnit>().ToArray();
+            Units = EnumHelpers.GetValues<MolarFlowUnit>();
             Zero = new MolarFlow(0, BaseUnit);
             Info = new QuantityInfo<MolarFlowUnit>("MolarFlow",
                 new UnitInfo<MolarFlowUnit>[]

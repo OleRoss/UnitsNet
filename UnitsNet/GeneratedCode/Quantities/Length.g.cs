@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(1, 0, 0, 0, 0, 0, 0);
             BaseUnit = LengthUnit.Meter;
-            Units = Enum.GetValues(typeof(LengthUnit)).Cast<LengthUnit>().ToArray();
+            Units = EnumHelpers.GetValues<LengthUnit>();
             Zero = new Length(0, BaseUnit);
             Info = new QuantityInfo<LengthUnit>("Length",
                 new UnitInfo<LengthUnit>[]

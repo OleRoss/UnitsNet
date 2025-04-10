@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, -2, 0, 0, 0, 0);
             BaseUnit = RadiationEquivalentDoseUnit.Sievert;
-            Units = Enum.GetValues(typeof(RadiationEquivalentDoseUnit)).Cast<RadiationEquivalentDoseUnit>().ToArray();
+            Units = EnumHelpers.GetValues<RadiationEquivalentDoseUnit>();
             Zero = new RadiationEquivalentDose(0, BaseUnit);
             Info = new QuantityInfo<RadiationEquivalentDoseUnit>("RadiationEquivalentDose",
                 new UnitInfo<RadiationEquivalentDoseUnit>[]

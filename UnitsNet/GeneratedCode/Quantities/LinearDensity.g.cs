@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-1, 1, 0, 0, 0, 0, 0);
             BaseUnit = LinearDensityUnit.KilogramPerMeter;
-            Units = Enum.GetValues(typeof(LinearDensityUnit)).Cast<LinearDensityUnit>().ToArray();
+            Units = EnumHelpers.GetValues<LinearDensityUnit>();
             Zero = new LinearDensity(0, BaseUnit);
             Info = new QuantityInfo<LinearDensityUnit>("LinearDensity",
                 new UnitInfo<LinearDensityUnit>[]

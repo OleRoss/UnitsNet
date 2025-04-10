@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = FuelEfficiencyUnit.LiterPer100Kilometers;
-            Units = Enum.GetValues(typeof(FuelEfficiencyUnit)).Cast<FuelEfficiencyUnit>().ToArray();
+            Units = EnumHelpers.GetValues<FuelEfficiencyUnit>();
             Zero = new FuelEfficiency(0, BaseUnit);
             Info = new QuantityInfo<FuelEfficiencyUnit>("FuelEfficiency",
                 new UnitInfo<FuelEfficiencyUnit>[]

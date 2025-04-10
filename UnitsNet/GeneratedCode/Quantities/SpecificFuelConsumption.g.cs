@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = SpecificFuelConsumptionUnit.GramPerKiloNewtonSecond;
-            Units = Enum.GetValues(typeof(SpecificFuelConsumptionUnit)).Cast<SpecificFuelConsumptionUnit>().ToArray();
+            Units = EnumHelpers.GetValues<SpecificFuelConsumptionUnit>();
             Zero = new SpecificFuelConsumption(0, BaseUnit);
             Info = new QuantityInfo<SpecificFuelConsumptionUnit>("SpecificFuelConsumption",
                 new UnitInfo<SpecificFuelConsumptionUnit>[]

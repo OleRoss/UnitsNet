@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, -2, 0, 0, 0, 0);
             BaseUnit = ApparentEnergyUnit.VoltampereHour;
-            Units = Enum.GetValues(typeof(ApparentEnergyUnit)).Cast<ApparentEnergyUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ApparentEnergyUnit>();
             Zero = new ApparentEnergy(0, BaseUnit);
             Info = new QuantityInfo<ApparentEnergyUnit>("ApparentEnergy",
                 new UnitInfo<ApparentEnergyUnit>[]

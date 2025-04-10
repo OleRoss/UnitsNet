@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 0, -2, 0, 0, 0, 0);
             BaseUnit = AbsorbedDoseOfIonizingRadiationUnit.Gray;
-            Units = Enum.GetValues(typeof(AbsorbedDoseOfIonizingRadiationUnit)).Cast<AbsorbedDoseOfIonizingRadiationUnit>().ToArray();
+            Units = EnumHelpers.GetValues<AbsorbedDoseOfIonizingRadiationUnit>();
             Zero = new AbsorbedDoseOfIonizingRadiation(0, BaseUnit);
             Info = new QuantityInfo<AbsorbedDoseOfIonizingRadiationUnit>("AbsorbedDoseOfIonizingRadiation",
                 new UnitInfo<AbsorbedDoseOfIonizingRadiationUnit>[]

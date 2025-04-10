@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(-2, -1, 3, 2, 0, 0, 0);
             BaseUnit = ElectricConductanceUnit.Siemens;
-            Units = Enum.GetValues(typeof(ElectricConductanceUnit)).Cast<ElectricConductanceUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ElectricConductanceUnit>();
             Zero = new ElectricConductance(0, BaseUnit);
             Info = new QuantityInfo<ElectricConductanceUnit>("ElectricConductance",
                 new UnitInfo<ElectricConductanceUnit>[]

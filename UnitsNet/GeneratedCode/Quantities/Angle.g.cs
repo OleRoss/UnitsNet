@@ -62,7 +62,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = AngleUnit.Degree;
-            Units = Enum.GetValues(typeof(AngleUnit)).Cast<AngleUnit>().ToArray();
+            Units = EnumHelpers.GetValues<AngleUnit>();
             Zero = new Angle(0, BaseUnit);
             Info = new QuantityInfo<AngleUnit>("Angle",
                 new UnitInfo<AngleUnit>[]

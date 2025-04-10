@@ -66,7 +66,7 @@ namespace UnitsNet
         {
             BaseDimensions = new BaseDimensions(2, 1, -3, 0, 0, 0, 0);
             BaseUnit = ApparentPowerUnit.Voltampere;
-            Units = Enum.GetValues(typeof(ApparentPowerUnit)).Cast<ApparentPowerUnit>().ToArray();
+            Units = EnumHelpers.GetValues<ApparentPowerUnit>();
             Zero = new ApparentPower(0, BaseUnit);
             Info = new QuantityInfo<ApparentPowerUnit>("ApparentPower",
                 new UnitInfo<ApparentPowerUnit>[]

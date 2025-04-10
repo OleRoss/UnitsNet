@@ -65,7 +65,7 @@ namespace UnitsNet
         {
             BaseDimensions = BaseDimensions.Dimensionless;
             BaseUnit = SolidAngleUnit.Steradian;
-            Units = Enum.GetValues(typeof(SolidAngleUnit)).Cast<SolidAngleUnit>().ToArray();
+            Units = EnumHelpers.GetValues<SolidAngleUnit>();
             Zero = new SolidAngle(0, BaseUnit);
             Info = new QuantityInfo<SolidAngleUnit>("SolidAngle",
                 new UnitInfo<SolidAngleUnit>[]
